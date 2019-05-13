@@ -15,7 +15,7 @@ public class Pawn extends Piece {
     }
 
     @Override
-    boolean move(int x,int y) {
+    boolean moveing(int x,int y) {
         boolean movable = false;
         if (firstMove && (x == X && (Math.abs(y - Y )== 2 || Math.abs(y - Y )== 1))){
             movable = true;

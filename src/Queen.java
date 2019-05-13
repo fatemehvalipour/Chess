@@ -6,7 +6,7 @@ public class Queen extends Piece{
         super(ID, color, isIn, X, Y);
     }
     @Override
-    boolean move(int x, int y) {
+    boolean moveing(int x, int y) {
         boolean movable = false;
         if(Math.abs(x - super.X) == Math.abs(y - super.Y) || (x == super.X && y != super.Y) || (y == super.Y && x != super.X)){
             movable = true;

@@ -4,7 +4,7 @@ public class Bishop extends Piece {
         super(ID , color, isIn, X, Y);
     }
     @Override
-    boolean move(int x, int y) {
+    boolean moveing(int x, int y) {
         boolean movable = false;
         if (Math.abs(x - super.X) == Math.abs(y - super.Y)){
             movable = true;

@@ -4,7 +4,7 @@ public class Knight extends Piece {
         super(ID , color, isIn, X, Y);
     }
     @Override
-    boolean move(int x, int y) {
+    boolean moveing(int x, int y) {
         boolean movable;
         if(Math.abs(x - super.X) + Math.abs(y - super.Y) == 3 && Math.abs(x - super.X) <= 2 && Math.abs(y - super.Y) <= 2 ){
             movable = true;

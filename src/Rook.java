@@ -5,7 +5,7 @@ public class Rook extends Piece {
     }
 
     @Override
-    boolean move(int x, int y) {
+    boolean moveing(int x, int y) {
         boolean movable = false;
         if((x == super.X && y != super.Y) || (y == super.Y && x != super.X) ){
             movable = true;
