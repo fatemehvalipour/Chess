@@ -6,7 +6,7 @@ public abstract class Piece {
     protected int Y;
 
     abstract boolean move(int x, int y);
-
+    //TODO check if x , y are ok in the table
     public Piece(int ID, String color, boolean isIn, int X, int Y) {
         this.ID = ID;
         this.color = color;
