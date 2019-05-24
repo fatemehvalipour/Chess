@@ -1,8 +1,24 @@
-public class Bishop extends Piece {
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
+/**
+ * Bishop extends piece
+ * @author man
+ * @version 1.0
+ */
+public class Bishop extends Piece {
     public Bishop(int ID, String color, boolean isIn, int X, int Y) {
         super(ID , color, isIn, X, Y);
+        pieces.add(this);
     }
+
+    /**
+     * checks possibility of move
+     * @param x destination
+     * @param y destination
+     * @return a boolean to demonstrate if Bishop is movable or not
+     */
     @Override
     boolean moveing(int x, int y) {
         boolean movable = false;
@@ -63,4 +79,9 @@ public class Bishop extends Piece {
         return false;
     }
 
+    @Override
+    ArrayList<String> availablePlaces(JButton[][] bts) {
+        places = Bishop(bts);
+        return places;
+    }
 }

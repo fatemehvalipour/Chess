@@ -1,10 +1,28 @@
-import com.sun.xml.internal.bind.v2.TODO;
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+
+/**
+ * Queen extends piece
+ * @author man
+ * @version 1.0
+ */
 
 public class Queen extends Piece{
 
     public Queen(int ID,String color, boolean isIn, int X, int Y) {
         super(ID, color, isIn, X, Y);
+        pieces.add(this);
     }
+
+    /**
+     * checks possibility of move
+     * @param x destination
+     * @param y destination
+     * @return a boolean to demonstrate if Queen is movable or not
+     */
     @Override
     boolean moveing(int x, int y) {
         boolean movable = false;
@@ -104,4 +122,15 @@ public class Queen extends Piece{
         }
         return false;
     }
+
+    @Override
+    ArrayList<String> availablePlaces(JButton[][] bts) {
+        // ArrayList<String> places1 = new ArrayList<>();
+         ArrayList<String> places1 = new ArrayList<>();
+         places = Rook(bts);
+         places1 = Bishop(bts);
+         places.addAll(places1);
+        return places;
+    }
+
 }

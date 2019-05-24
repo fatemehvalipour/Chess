@@ -1,3 +1,8 @@
+/**
+ * the map
+ * @author man
+ * @version 1.0
+ */
 public class Ground {
     static String[][] game;
 
