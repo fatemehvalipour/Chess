@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * @author man
  * @version 1.0
  */
+//TODO bound check
 public abstract class Piece extends JButton {
     protected int ID;
     protected String color;

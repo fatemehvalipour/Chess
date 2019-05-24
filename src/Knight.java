@@ -34,39 +34,55 @@ public class Knight extends Piece {
 
     @Override
     ArrayList<String> availablePlaces(JButton[][] bts) {
-       if (!(bts[this.getY() - 2][this.getX() + 1] instanceof Piece)
-               || !((Piece)bts[this.getY() - 2][this.getX() + 1]).getColor().equals(this.color)) {
-           places.add("" + (this.getY() - 2) + (this.getX() + 1));
+        if (this.getY() >= 2 && this.getX() <= 6) {
+            if (!(bts[this.getY() - 2][this.getX() + 1] instanceof Piece)
+                    || !((Piece) bts[this.getY() - 2][this.getX() + 1]).getColor().equals(this.color)) {
+                places.add("" + (this.getY() - 2) + (this.getX() + 1));
 
-       }
-        if (!(bts[this.getY() - 2][this.getX() - 1] instanceof Piece)
-                || !((Piece)bts[this.getY() - 2][this.getX() - 1]).getColor().equals(this.color)) {
-            places.add("" + (this.getY() - 2) + (this.getX() - 1));
+            }
+        }
+        if (this.getY() >= 2 && this.getX() >= 1) {
+            if (!(bts[this.getY() - 2][this.getX() - 1] instanceof Piece)
+                    || !((Piece) bts[this.getY() - 2][this.getX() - 1]).getColor().equals(this.color)) {
+                places.add("" + (this.getY() - 2) + (this.getX() - 1));
 
+            }
         }
-        if (!(bts[this.getY() + 2][this.getX() - 1] instanceof Piece)
-                || !((Piece)bts[this.getY() + 2][this.getX() - 1]).getColor().equals(this.color)) {
-            places.add("" + (this.getY() + 2) + (this.getX() - 1));
+        if (this.getX() >= 1 && this.getY() <= 5) {
+            if (!(bts[this.getY() + 2][this.getX() - 1] instanceof Piece)
+                    || !((Piece) bts[this.getY() + 2][this.getX() - 1]).getColor().equals(this.color)) {
+                places.add("" + (this.getY() + 2) + (this.getX() - 1));
+            }
         }
-        if (!(bts[this.getY() + 2][this.getX() + 1] instanceof Piece)
-                || !((Piece)bts[this.getY() + 2][this.getX() + 1]).getColor().equals(this.color)) {
-            places.add("" + (this.getY() + 2) + (this.getX() + 1));
+        if (this.getY() <= 5 &&  this.getX() <= 6) {
+            if (!(bts[this.getY() + 2][this.getX() + 1] instanceof Piece)
+                    || !((Piece) bts[this.getY() + 2][this.getX() + 1]).getColor().equals(this.color)) {
+                places.add("" + (this.getY() + 2) + (this.getX() + 1));
+            }
         }
-        if (!(bts[this.getY() - 1][this.getX() + 2] instanceof Piece)
-                || !((Piece)bts[this.getY() - 1][this.getX() + 2]).getColor().equals(this.color)) {
-            places.add("" + (this.getY() - 1) + (this.getX() + 2));
+        if (this.getX() <= 5 && this.getY() >= 1) {
+            if (!(bts[this.getY() - 1][this.getX() + 2] instanceof Piece)
+                    || !((Piece) bts[this.getY() - 1][this.getX() + 2]).getColor().equals(this.color)) {
+                places.add("" + (this.getY() - 1) + (this.getX() + 2));
+            }
         }
-        if (!(bts[this.getY() - 1][this.getX() - 2] instanceof Piece)
-                || !((Piece)bts[this.getY() - 1][this.getX() - 2]).getColor().equals(this.color)) {
-            places.add("" + (this.getY() - 1) + (this.getX() - 2));
+        if (this.getY() >= 1 && this.getX() >= 2) {
+            if (!(bts[this.getY() - 1][this.getX() - 2] instanceof Piece)
+                    || !((Piece) bts[this.getY() - 1][this.getX() - 2]).getColor().equals(this.color)) {
+                places.add("" + (this.getY() - 1) + (this.getX() - 2));
+            }
         }
-        if (!(bts[this.getY() + 1][this.getX() + 2] instanceof Piece)
-                || !((Piece)bts[this.getY() + 1][this.getX() + 2]).getColor().equals(this.color)) {
-            places.add("" + (this.getY() + 1) + (this.getX() + 2));
+        if (this.getY() <= 6 && this.getX() <= 5) {
+            if (!(bts[this.getY() + 1][this.getX() + 2] instanceof Piece)
+                    || !((Piece) bts[this.getY() + 1][this.getX() + 2]).getColor().equals(this.color)) {
+                places.add("" + (this.getY() + 1) + (this.getX() + 2));
+            }
         }
-        if (!(bts[this.getY() + 1][this.getX() - 2] instanceof Piece)
-                || !((Piece)bts[this.getY() + 1][this.getX() - 2]).getColor().equals(this.color)) {
-            places.add("" + (this.getY() + 1) + (this.getX() - 2));
+        if (this.getY() <= 6 && this.getX() >= 2) {
+            if (!(bts[this.getY() + 1][this.getX() - 2] instanceof Piece)
+                    || !((Piece) bts[this.getY() + 1][this.getX() - 2]).getColor().equals(this.color)) {
+                places.add("" + (this.getY() + 1) + (this.getX() - 2));
+            }
         }
         return places;
     }

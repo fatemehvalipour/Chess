@@ -79,14 +79,20 @@ public class Pawn extends Piece {
                     }
                 }
             } else {
-                if (!(bts[this.getY() - 1][this.getX()] instanceof Piece)) {
-                    places.add("" + (this.getY() - 1) + (this.getX()));
+                if (this.getY() >= 1) {
+                    if (!(bts[this.getY() - 1][this.getX()] instanceof Piece)) {
+                        places.add("" + (this.getY() - 1) + (this.getX()));
+                    }
                 }
-                if (bts[this.getY() - 1][this.getX() + 1] instanceof Piece && ((Piece) bts[this.getY() - 1][this.getX() + 1]).getColor().equals("white")) {
-                    places.add("" + (this.getY() - 1) + (this.getX() + 1));
+                if (this.getY() >= 1 && this.getX() <= 6) {
+                    if (bts[this.getY() - 1][this.getX() + 1] instanceof Piece && ((Piece) bts[this.getY() - 1][this.getX() + 1]).getColor().equals("white")) {
+                        places.add("" + (this.getY() - 1) + (this.getX() + 1));
+                    }
                 }
-                if (bts[this.getY() - 1][this.getX() - 1] instanceof Piece && ((Piece) bts[this.getY() - 1][this.getX() - 1]).getColor().equals("white")) {
-                    places.add("" + (this.getY() - 1) + (this.getX() - 1));
+                if (this.getY() >= 1 && this.getX() >= 1) {
+                    if (bts[this.getY() - 1][this.getX() - 1] instanceof Piece && ((Piece) bts[this.getY() - 1][this.getX() - 1]).getColor().equals("white")) {
+                        places.add("" + (this.getY() - 1) + (this.getX() - 1));
+                    }
                 }
 
             }
@@ -99,14 +105,20 @@ public class Pawn extends Piece {
                     }
                 }
             } else {
-                if (!(bts[this.getY() + 1][this.getX()] instanceof Piece)) {
-                    places.add("" + (this.getY() + 1) + (this.getX()));
+                if (this.getY() <= 6) {
+                    if (!(bts[this.getY() + 1][this.getX()] instanceof Piece)) {
+                        places.add("" + (this.getY() + 1) + (this.getX()));
+                    }
                 }
-                if (bts[this.getY() + 1][this.getX() + 1] instanceof Piece && ((Piece) bts[this.getY() + 1][this.getX() + 1]).getColor().equals("black")) {
-                    places.add("" + (this.getY() + 1) + (this.getX() + 1));
+                if (this.getY() <= 6 && this.getX() <= 6) {
+                    if (bts[this.getY() + 1][this.getX() + 1] instanceof Piece && ((Piece) bts[this.getY() + 1][this.getX() + 1]).getColor().equals("black")) {
+                        places.add("" + (this.getY() + 1) + (this.getX() + 1));
+                    }
                 }
-                if (bts[this.getY() + 1][this.getX() - 1] instanceof Piece && ((Piece) bts[this.getY() + 1][this.getX() - 1]).getColor().equals("black")) {
-                    places.add("" + (this.getY() + 1) + (this.getX() - 1));
+                if (this.getY() <= 6 && this.getX() >= 1) {
+                    if (bts[this.getY() + 1][this.getX() - 1] instanceof Piece && ((Piece) bts[this.getY() + 1][this.getX() - 1]).getColor().equals("black")) {
+                        places.add("" + (this.getY() + 1) + (this.getX() - 1));
+                    }
                 }
 
             }

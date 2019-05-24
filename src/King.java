@@ -33,37 +33,53 @@ public class King extends Piece {
 
     @Override
     ArrayList<String> availablePlaces(JButton[][] bts) {
-        if (!(bts[this.getY() + 1][this.getX() - 1] instanceof Piece)
-                || !(((Piece) bts[this.getY() + 1][this.getX() - 1]).getColor().equals(this.color))){
-            places.add("" + (this.getY() + 1 ) + (this.getX() - 1));
+        if (this.getY() <= 6 && this.getX() >= 1) {
+            if (!(bts[this.getY() + 1][this.getX() - 1] instanceof Piece)
+                    || !(((Piece) bts[this.getY() + 1][this.getX() - 1]).getColor().equals(this.color))) {
+                places.add("" + (this.getY() + 1) + (this.getX() - 1));
+            }
         }
-        if (!(bts[this.getY() + 1][this.getX()] instanceof Piece)
-                || !(((Piece) bts[this.getY() + 1][this.getX()]).getColor().equals(this.color))){
-            places.add("" + (this.getY() + 1) + (this.getX()));
+        if (this.getY() <= 6) {
+            if (!(bts[this.getY() + 1][this.getX()] instanceof Piece)
+                    || !(((Piece) bts[this.getY() + 1][this.getX()]).getColor().equals(this.color))) {
+                places.add("" + (this.getY() + 1) + (this.getX()));
+            }
         }
-        if (!(bts[this.getY() + 1][this.getX() + 1] instanceof Piece)
-                || !(((Piece) bts[this.getY() + 1][this.getX() + 1]).getColor().equals(this.color))){
-            places.add("" + (this.getY() + 1) + (this.getX() + 1));
+        if (this.getY() <= 6 && this.getX() <= 6) {
+            if (!(bts[this.getY() + 1][this.getX() + 1] instanceof Piece)
+                    || !(((Piece) bts[this.getY() + 1][this.getX() + 1]).getColor().equals(this.color))) {
+                places.add("" + (this.getY() + 1) + (this.getX() + 1));
+            }
         }
-        if (!(bts[this.getY() - 1][this.getX() - 1] instanceof Piece)
-                || !(((Piece) bts[this.getY() - 1][this.getX() - 1]).getColor().equals(this.color))){
-            places.add("" + (this.getY() - 1) + (this.getX() - 1));
+        if (this.getY() >= 1 && this.getX() >= 1) {
+            if (!(bts[this.getY() - 1][this.getX() - 1] instanceof Piece)
+                    || !(((Piece) bts[this.getY() - 1][this.getX() - 1]).getColor().equals(this.color))) {
+                places.add("" + (this.getY() - 1) + (this.getX() - 1));
+            }
         }
-        if (!(bts[this.getY() - 1][this.getX() + 1] instanceof Piece)
-                || !(((Piece) bts[this.getY() - 1][this.getX() + 1]).getColor().equals(this.color))){
-            places.add("" + (this.getY() - 1) + (this.getX() + 1));
+        if (this.getY() >= 1 && this.getX() <= 6) {
+            if (!(bts[this.getY() - 1][this.getX() + 1] instanceof Piece)
+                    || !(((Piece) bts[this.getY() - 1][this.getX() + 1]).getColor().equals(this.color))) {
+                places.add("" + (this.getY() - 1) + (this.getX() + 1));
+            }
         }
-        if (!(bts[this.getY() - 1][this.getX()] instanceof Piece)
-                || !(((Piece) bts[this.getY() - 1][this.getX()]).getColor().equals(this.color))){
-            places.add("" + (this.getY() - 1) + this.getX());
+        if (this.getY() >= 1) {
+            if (!(bts[this.getY() - 1][this.getX()] instanceof Piece)
+                    || !(((Piece) bts[this.getY() - 1][this.getX()]).getColor().equals(this.color))) {
+                places.add("" + (this.getY() - 1) + this.getX());
+            }
         }
-        if (!(bts[this.getY()][this.getX() - 1] instanceof Piece)
-                || !(((Piece) bts[this.getY()][this.getX() - 1]).getColor().equals(this.color))){
-            places.add("" + this.getY() + (this.getX() - 1));
+        if (this.getX() >= 1) {
+            if (!(bts[this.getY()][this.getX() - 1] instanceof Piece)
+                    || !(((Piece) bts[this.getY()][this.getX() - 1]).getColor().equals(this.color))) {
+                places.add("" + this.getY() + (this.getX() - 1));
+            }
         }
-        if (!(bts[this.getY()][this.getX() + 1] instanceof Piece)
-                || !(((Piece) bts[this.getY()][this.getX() + 1]).getColor().equals(this.color))){
-            places.add("" + this.getY() + (this.getX() + 1));
+        if (this.getX() <= 6) {
+            if (!(bts[this.getY()][this.getX() + 1] instanceof Piece)
+                    || !(((Piece) bts[this.getY()][this.getX() + 1]).getColor().equals(this.color))) {
+                places.add("" + this.getY() + (this.getX() + 1));
+            }
         }
         return places;
     }

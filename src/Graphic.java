@@ -115,27 +115,6 @@ public class Graphic implements MouseListener {
             }
             arrange();
         }
-//        if (jbtn instanceof Rook) {
-//            ((Rook) jbtn).availablePlaces(bts);
-//            for (String place : ((Rook) jbtn).places) {
-//                int y = Integer.parseInt("" + place.charAt(0));
-//                int x = Integer.parseInt("" + place.charAt(1));
-//                bts[y][x].setBackground(Color.red);
-//                System.out.println("" + place.charAt(0) + place.charAt(1));
-////                System.out.println("" + i + " hala" + ((Rook) jbtn).places.get(i));
-//            }
-//            arrange();
-//        }
-//        if (jbtn instanceof Queen) {
-//            ((Queen) jbtn).availablePlaces(bts);
-//            for (String place : ((Queen) jbtn).places) {
-//                int y = Integer.parseInt("" + place.charAt(0));
-//                int x = Integer.parseInt("" + place.charAt(1));
-//                bts[y][x].setBackground(Color.red);
-////                System.out.println("" + i + " hala" + ((Rook) jbtn).places.get(i));
-//            }
-//            arrange();
-//        }
     }
 
     @Override
@@ -161,10 +140,5 @@ public class Graphic implements MouseListener {
     public static void main(String[] args) {
         Graphic graphic = new Graphic();
         graphic.open();
-        //r1.setIcon(new ImageIcon("rook.png"));
-//        if(bts[1][3] instanceof Piece){
-//            bts[1][2].setBackground(Color.blue);
-//        }
-
     }
 }
