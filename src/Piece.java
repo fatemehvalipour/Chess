@@ -45,6 +45,15 @@ public abstract class Piece extends JButton {
     public int getX() {
         return X;
     }
+
+    public void setX(int x) {
+        X = x;
+    }
+
+    public void setY(int y) {
+        Y = y;
+    }
+
     protected ArrayList<String> Rook(JButton bts[][]){
         for (int i = this.getX() + 1; i < 8; i++) {
             if (!(bts[this.getY()][i] instanceof Piece)
