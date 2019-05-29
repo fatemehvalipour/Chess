@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.Color;
+
 /**
  * it makes the appearance of the map of the game
  *
@@ -16,7 +17,7 @@ public class Graphic implements MouseListener {
     private static JPanel panel2;
     private JPanel panel3;
     private static JButton[][] bts;
-    public static final Color VERY_LIGHT_RED = new Color(255,102,102);
+    public static final Color VERY_LIGHT_RED = new Color(255, 102, 102);
 
     public Graphic() {
         mainFrame = new JFrame("Chess");
@@ -34,14 +35,15 @@ public class Graphic implements MouseListener {
         panel3.setBackground(Color.GREEN);
         BorderLayout bLayout = new BorderLayout();
         mainFrame.getContentPane().add(panel);
-        //mainFrame.setDefaultCloseOperation(1);
         panel.setLayout(bLayout);
-        panel.add(panel1, BorderLayout.EAST);
+        panel.add(panel1, BorderLayout.WEST);
         panel.add(panel2, BorderLayout.CENTER);
-        //panel.add(panel3,BorderLayout.EAST);
+        panel.add(panel3, BorderLayout.EAST);
         panel1.setPreferredSize(new Dimension(350, 190));
         panel3.setPreferredSize(new Dimension(350, 190));
         panel2.setLayout(new GridLayout(8, 8));
+        panel1.setLayout(new GridLayout(8, 2));
+        panel3.setLayout(new GridLayout(8, 2));
         new Rook(3, "black", true, 7, 7);
         new Rook(4, "black", true, 0, 7);
         new Knight(3, "black", true, 1, 7);
@@ -65,16 +67,12 @@ public class Graphic implements MouseListener {
             new Pawn(i + 8, "white", true, i, 1);
         }
         for (Piece p : Piece.getPieces()) {
-            if (p.color.equals("black")) {
-                p.setIcon(new ImageIcon("" + p.getColor().toUpperCase().charAt(0) + p.getClass().getName() + ".png"));
-                bts[p.getY()][p.getX()] = p;
-            }
-            if (p.color.equals("white")) {
-                p.setIcon(new ImageIcon("" + p.getColor().toUpperCase().charAt(0) + p.getClass().getName() + ".png"));
-                bts[p.getY()][p.getX()] = p;
-            }
+            p.setIcon(new ImageIcon("" + p.getColor().toUpperCase().charAt(0) + p.getClass().getName() + ".png"));
+            bts[p.getY()][p.getX()] = p;
+            bts[p.getY()][p.getX()].setOpaque(true);
             p.addMouseListener(this);
         }
+//        panel2.repaint();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (bts[i][j] == null) {
@@ -91,11 +89,12 @@ public class Graphic implements MouseListener {
         }
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
+                bts[i][j].setFocusable(false);
                 panel2.add(bts[i][j]);
             }
         }
-        panel2.repaint();
         mainFrame.pack();
+        SwingUtilities.updateComponentTreeUI(panel2);
         mainFrame.setVisible(true);
     }
 
@@ -120,23 +119,27 @@ public class Graphic implements MouseListener {
             }
         }
     }
-    public String find(JButton[][] bts,JButton jbtn){
+
+    public String find(JButton[][] bts, JButton jbtn) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (bts[i][j] == jbtn){
+                if (bts[i][j] == jbtn) {
                     return "" + i + j;
                 }
             }
         }
         return null;
     }
+
     JButton btn2 = null;
     static boolean changed = false;
+    static String turn = "white";
+
     @Override
     public void mouseClicked(MouseEvent e) {
         if (!changed) {
-            JButton jbtn = (JButton)e.getSource();
-            if (jbtn instanceof Piece) {
+            JButton jbtn = (JButton) e.getSource();
+            if (jbtn instanceof Piece && turn.equals(((Piece)jbtn).getColor())) {
                 ((Piece) jbtn).availablePlaces(bts);
                 for (String place : ((Piece) jbtn).places) {
                     int y = Integer.parseInt("" + place.charAt(0));
@@ -147,27 +150,43 @@ public class Graphic implements MouseListener {
                 changed = true;
                 arrange();
                 btn2 = jbtn;
+                if (turn.equals("black")){
+                    turn = "white";
+                } else {
+                    turn = "black";
+                }
             }
         } else {
-            JButton jbtn1 = (JButton)e.getSource();
+            JButton jbtn1 = (JButton) e.getSource();
             if (jbtn1.getBackground() == Color.RED) {
-                int xDes = Integer.parseInt("" + find(bts,jbtn1).charAt(1));
-                int yDes = Integer.parseInt("" + find(bts,jbtn1).charAt(0));
-                int xOrig = Integer.parseInt("" + find(bts,btn2).charAt(1));
-                int yOrig = Integer.parseInt("" + find(bts,btn2).charAt(0));
+                int xDes = Integer.parseInt("" + find(bts, jbtn1).charAt(1));
+                int yDes = Integer.parseInt("" + find(bts, jbtn1).charAt(0));
+                int xOrig = Integer.parseInt("" + find(bts, btn2).charAt(1));
+                int yOrig = Integer.parseInt("" + find(bts, btn2).charAt(0));
                 bts[yDes][xDes] = btn2;
-                ((Piece)btn2).setX(xDes);
-                ((Piece)btn2).setY(yDes);
-                if (jbtn1 instanceof Piece){
+                ((Piece) btn2).setX(xDes);
+                ((Piece) btn2).setY(yDes);
+                if (jbtn1 instanceof Piece) {
+                    if (jbtn1 instanceof King){
+                        JOptionPane.showMessageDialog(panel2,"you won");
+                        System.exit(0);
+                    }
                     JButton newBtn = new JButton();
                     newBtn.addMouseListener(this);
                     bts[yOrig][xOrig] = newBtn;
+                    if (((Piece) (jbtn1)).getColor().equals("black")) {
+                        jbtn1.setBackground(Color.RED);
+                        panel1.add(jbtn1);
+                    } else {
+                        jbtn1.setBackground(Color.GREEN);
+                        panel3.add(jbtn1);
+                    }
                 } else {
                     bts[yOrig][xOrig] = jbtn1;
                 }
-
                 arrange();
                 rearrange();
+                king(bts);
             } else {
                 rearrange();
             }
@@ -175,6 +194,22 @@ public class Graphic implements MouseListener {
         }
     }
 
+    public void king(JButton[][] bts){
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (bts[i][j] instanceof King){
+                    for (Piece p : Piece.getPieces()){
+                        p.availablePlaces(bts);
+                        if (p.places.contains("" + i + j)){
+                            bts[i][j].setBackground(Color.YELLOW);
+                        }
+                        p.places.removeAll(p.places);
+                    }
+                }
+            }
+        }
+
+    }
     @Override
     public void mousePressed(MouseEvent e) {
 
