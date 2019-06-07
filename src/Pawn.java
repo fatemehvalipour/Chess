@@ -35,38 +35,38 @@ public class Pawn extends Piece {
      * @param y destination
      * @return boolean to check if pawn is movable or not
      */
-    @Override
-    boolean moveing(int x,int y) {
-        boolean movable = false;
-        if (firstMove && (x == X && (Math.abs(y - Y )== 2 || Math.abs(y - Y )== 1))){
-            movable = true;
-        }else if(!firstMove && x == X && Math.abs(y - Y) == 1){
-            movable = true;
-        }else {
-            return false;
-        }
-        boolean yesOrNo = false;
-        if (movable && !Ground.getWhatColor(x,y).equals(Ground.getWhatColor(X,Y))){
-            int dif = Math.abs(y - super.Y);
-            int ratio = 1;
-            if(y - super.Y < 0){
-                ratio = -1;
-            }
-            for(int i = 1;i < dif ;i++){
-                if(Ground.game[x][super.Y + ratio * i].equals("-")){
-                    yesOrNo = true;
-                }else {
-                    yesOrNo = false;
-                    break;
-                }
-            }
-            if (yesOrNo){
-                return true;
-            }else
-                return false;
-        }
-        return false;
-    }
+//    @Override
+//    boolean moveing(int x,int y) {
+//        boolean movable = false;
+//        if (firstMove && (x == X && (Math.abs(y - Y )== 2 || Math.abs(y - Y )== 1))){
+//            movable = true;
+//        }else if(!firstMove && x == X && Math.abs(y - Y) == 1){
+//            movable = true;
+//        }else {
+//            return false;
+//        }
+//        boolean yesOrNo = false;
+//        if (movable && !Ground.getWhatColor(x,y).equals(Ground.getWhatColor(X,Y))){
+//            int dif = Math.abs(y - super.Y);
+//            int ratio = 1;
+//            if(y - super.Y < 0){
+//                ratio = -1;
+//            }
+//            for(int i = 1;i < dif ;i++){
+//                if(Ground.game[x][super.Y + ratio * i].equals("-")){
+//                    yesOrNo = true;
+//                }else {
+//                    yesOrNo = false;
+//                    break;
+//                }
+//            }
+//            if (yesOrNo){
+//                return true;
+//            }else
+//                return false;
+//        }
+//        return false;
+//    }
 
     @Override
     ArrayList<String> availablePlaces(JButton[][] bts) {

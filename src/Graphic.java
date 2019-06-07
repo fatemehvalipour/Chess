@@ -24,7 +24,8 @@ public class Graphic implements MouseListener,Runnable{
     private JPanel panel3;
     private  JButton[][] bts;
     private String turn;
-    //public static final Color VERY_LIGHT_RED = new Color(255, 102, 102);
+    public static final Color color = new Color(255, 102, 102);
+    public static final Color Grey = new Color(102, 102, 102);
 
     public Graphic(String color) {
         turn = color;
@@ -44,19 +45,19 @@ public class Graphic implements MouseListener,Runnable{
         in = new DataInputStream(socket.getInputStream());
         System.out.println("end");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        panel1.setBackground(Color.RED);
-        panel3.setBackground(Color.GREEN);
+        panel1.setBackground(color);
+        //panel3.setBackground(Color.GREEN);
         BorderLayout bLayout = new BorderLayout();
         mainFrame.getContentPane().add(panel);
         panel.setLayout(bLayout);
         panel.add(panel1, BorderLayout.WEST);
         panel.add(panel2, BorderLayout.CENTER);
-        panel.add(panel3, BorderLayout.EAST);
+        //panel.add(panel3, BorderLayout.EAST);
         panel1.setPreferredSize(new Dimension(350, 190));
-        panel3.setPreferredSize(new Dimension(350, 190));
+        //panel3.setPreferredSize(new Dimension(350, 190));
         panel2.setLayout(new GridLayout(8, 8));
         panel1.setLayout(new GridLayout(8, 2));
-        panel3.setLayout(new GridLayout(8, 2));
+        //panel3.setLayout(new GridLayout(8, 2));
         new Rook(3, "black", true, 7, 7);
         new Rook(4, "black", true, 0, 7);
         new Knight(3, "black", true, 1, 7);
@@ -156,7 +157,7 @@ public class Graphic implements MouseListener,Runnable{
                 for (String place : ((Piece) jbtn).places) {
                     int y = Integer.parseInt("" + place.charAt(0));
                     int x = Integer.parseInt("" + place.charAt(1));
-                    bts[y][x].setBackground(Color.RED);
+                    bts[y][x].setBackground(Grey);
                 }
                 ((Piece) jbtn).availablePlaces(bts).removeAll(((Piece) jbtn).availablePlaces(bts));
                 changed = true;
@@ -166,7 +167,7 @@ public class Graphic implements MouseListener,Runnable{
         } else {
             JButton jbtn1 = (JButton) e.getSource();
             System.out.println("mouse");
-            if (jbtn1.getBackground() == Color.RED) {
+            if (jbtn1.getBackground() == Grey) {
                 int xDes = Integer.parseInt("" + find(bts, jbtn1).charAt(1));
                 int yDes = Integer.parseInt("" + find(bts, jbtn1).charAt(0));
                 int xOrig = Integer.parseInt("" + find(bts, btn2).charAt(1));
@@ -183,11 +184,11 @@ public class Graphic implements MouseListener,Runnable{
                     newBtn.addMouseListener(this);
                     bts[yOrig][xOrig] = newBtn;
                     if (((Piece) (jbtn1)).getColor().equals("black")) {
-                        jbtn1.setBackground(Color.RED);
+                        jbtn1.setBackground(color);
                         panel1.add(jbtn1);
                     } else {
-                        jbtn1.setBackground(Color.GREEN);
-                        panel3.add(jbtn1);
+                        jbtn1.setBackground(color);
+                        panel1.add(jbtn1);
                     }
                 } else {
                     bts[yOrig][xOrig] = jbtn1;
@@ -277,11 +278,11 @@ public class Graphic implements MouseListener,Runnable{
                     newBtn.addMouseListener(this);
                     bts[Integer.parseInt("" + takePlaces.charAt(2))][Integer.parseInt("" + takePlaces.charAt(3))] = newBtn;
                     if (((Piece) (jbtn1)).getColor().equals("black")) {
-                        jbtn1.setBackground(Color.RED);
+                        jbtn1.setBackground(color);
                         panel1.add(jbtn1);
                     } else {
-                        jbtn1.setBackground(Color.GREEN);
-                        panel3.add(jbtn1);
+                        jbtn1.setBackground(color);
+                        panel1.add(jbtn1);
                     }
                 } else {
                     bts[Integer.parseInt("" + takePlaces.charAt(2))][Integer.parseInt("" + takePlaces.charAt(3))] = jbtn1;

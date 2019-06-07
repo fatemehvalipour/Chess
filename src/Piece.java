@@ -18,7 +18,7 @@ public abstract class Piece extends JButton {
     public static ArrayList<Piece> getPieces() {
         return pieces;
     }
-    abstract boolean moveing(int x, int y);
+//    abstract boolean moveing(int x, int y);
     abstract ArrayList<String> availablePlaces(JButton[][] bts);
     //TODO check if x , y are ok in the table
     public Piece(int ID, String color, boolean isIn, int X, int Y) {
