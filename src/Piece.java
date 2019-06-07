@@ -38,11 +38,11 @@ public abstract class Piece extends JButton {
         return isIn;
     }
 
-    public int getY() {
+    public int getMyY() {
         return Y;
     }
 
-    public int getX() {
+    public int getMyX() {
         return X;
     }
 
@@ -55,12 +55,12 @@ public abstract class Piece extends JButton {
     }
 
     protected ArrayList<String> Rook(JButton bts[][]){
-        for (int i = this.getX() + 1; i < 8; i++) {
-            if (!(bts[this.getY()][i] instanceof Piece)
-                    || !(((Piece) bts[this.getY()][i]).getColor().equals(this.color))) {
-                places.add("" + this.getY() + i);
-                if (bts[this.getY()][i] instanceof Piece) {
-                    if (!(((Piece) bts[this.getY()][i]).getColor().equals(this.color))) {
+        for (int i = this.getMyX() + 1; i < 8; i++) {
+            if (!(bts[this.getMyY()][i] instanceof Piece)
+                    || !(((Piece) bts[this.getMyY()][i]).getColor().equals(this.color))) {
+                places.add("" + this.getMyY() + i);
+                if (bts[this.getMyY()][i] instanceof Piece) {
+                    if (!(((Piece) bts[this.getMyY()][i]).getColor().equals(this.color))) {
                         break;
                     }
 
@@ -69,12 +69,12 @@ public abstract class Piece extends JButton {
                 break;
             }
         }
-        for (int i = this.getX() - 1; i >= 0; i--) {
-            if (!(bts[this.getY()][i] instanceof Piece)
-                    || !(((Piece) bts[this.getY()][i]).getColor().equals(this.color))) {
-                places.add("" + this.getY() + i);
-                if (bts[this.getY()][i] instanceof Piece) {
-                    if (!(((Piece) bts[this.getY()][i]).getColor().equals(this.color))) {
+        for (int i = this.getMyX() - 1; i >= 0; i--) {
+            if (!(bts[this.getMyY()][i] instanceof Piece)
+                    || !(((Piece) bts[this.getMyY()][i]).getColor().equals(this.color))) {
+                places.add("" + this.getMyY() + i);
+                if (bts[this.getMyY()][i] instanceof Piece) {
+                    if (!(((Piece) bts[this.getMyY()][i]).getColor().equals(this.color))) {
                         break;
                     }
                 }
@@ -83,13 +83,13 @@ public abstract class Piece extends JButton {
             }
         }
 
-        for (int i = this.getY() + 1; i < 8; i++) {
-            if (!(bts[i][this.getX()] instanceof Piece)
-                    || !(((Piece) bts[i][this.getX()]).getColor().equals(this.color))) {
-                System.out.println("" + this.getX() + ", " + i);
-                places.add("" + i + this.getX());
-                if (bts[i][this.getX()] instanceof Piece) {
-                    if (!(((Piece) bts[i][this.getX()]).getColor().equals(this.color))) {
+        for (int i = this.getMyY() + 1; i < 8; i++) {
+            if (!(bts[i][this.getMyX()] instanceof Piece)
+                    || !(((Piece) bts[i][this.getMyX()]).getColor().equals(this.color))) {
+                System.out.println("" + this.getMyX() + ", " + i);
+                places.add("" + i + this.getMyX());
+                if (bts[i][this.getMyX()] instanceof Piece) {
+                    if (!(((Piece) bts[i][this.getMyX()]).getColor().equals(this.color))) {
                         break;
                     }
                 }
@@ -97,12 +97,12 @@ public abstract class Piece extends JButton {
                 break;
             }
         }
-        for (int i = this.getY() - 1; i >= 0; i--) {
-            if (!(bts[i][this.getX()] instanceof Piece)
-                    || !(((Piece) bts[i][this.getX()]).getColor().equals(this.color))) {
-                places.add("" + i + this.getX());
-                if (bts[i][this.getX()] instanceof Piece) {
-                    if (!(((Piece) bts[i][this.getX()]).getColor().equals(this.color))) {
+        for (int i = this.getMyY() - 1; i >= 0; i--) {
+            if (!(bts[i][this.getMyX()] instanceof Piece)
+                    || !(((Piece) bts[i][this.getMyX()]).getColor().equals(this.color))) {
+                places.add("" + i + this.getMyX());
+                if (bts[i][this.getMyX()] instanceof Piece) {
+                    if (!(((Piece) bts[i][this.getMyX()]).getColor().equals(this.color))) {
                         break;
                     }
                 }
@@ -113,13 +113,13 @@ public abstract class Piece extends JButton {
         return places;
     }
     protected ArrayList<String> Bishop(JButton bts[][]){
-        int min = Math.min(Math.abs(7 - this.getX()) , Math.abs(7 - this.getY()));
+        int min = Math.min(Math.abs(7 - this.getMyX()) , Math.abs(7 - this.getMyY()));
         for (int i = 1 ;i < min + 1 ;i++){
-            if (!(bts[this.getY() + i][this.getX() + i] instanceof Piece)
-                    || !(((Piece) bts[this.getY() + i][this.getX() + i]).getColor().equals(this.color))){
-                places.add("" + (this.getY() + i) + (this.getX() + i));
-                if (bts[this.getY() + i][this.getX() + i] instanceof Piece) {
-                    if (!(((Piece) bts[this.getY() + i][this.getX() + i]).getColor().equals(this.color))) {
+            if (!(bts[this.getMyY() + i][this.getMyX() + i] instanceof Piece)
+                    || !(((Piece) bts[this.getMyY() + i][this.getMyX() + i]).getColor().equals(this.color))){
+                places.add("" + (this.getMyY() + i) + (this.getMyX() + i));
+                if (bts[this.getMyY() + i][this.getMyX() + i] instanceof Piece) {
+                    if (!(((Piece) bts[this.getMyY() + i][this.getMyX() + i]).getColor().equals(this.color))) {
                         break;
                     }
                 }
@@ -127,13 +127,13 @@ public abstract class Piece extends JButton {
                 break;
             }
         }
-        min = Math.min(Math.abs(7 - this.getX()) , Math.abs(this.getY()));
+        min = Math.min(Math.abs(7 - this.getMyX()) , Math.abs(this.getMyY()));
         for (int i = 1 ;i < min + 1 ;i++){
-            if (!(bts[this.getY() - i][this.getX() + i] instanceof Piece)
-                    || !(((Piece) bts[this.getY() - i][this.getX() + i]).getColor().equals(this.color))){
-                places.add("" + (this.getY() - i) + (this.getX() + i));
-                if (bts[this.getY() - i][this.getX() + i] instanceof Piece) {
-                    if (!(((Piece) bts[this.getY() - i][this.getX() + i]).getColor().equals(this.color))) {
+            if (!(bts[this.getMyY() - i][this.getMyX() + i] instanceof Piece)
+                    || !(((Piece) bts[this.getMyY() - i][this.getMyX() + i]).getColor().equals(this.color))){
+                places.add("" + (this.getMyY() - i) + (this.getMyX() + i));
+                if (bts[this.getMyY() - i][this.getMyX() + i] instanceof Piece) {
+                    if (!(((Piece) bts[this.getMyY() - i][this.getMyX() + i]).getColor().equals(this.color))) {
                         break;
                     }
                 }
@@ -141,13 +141,13 @@ public abstract class Piece extends JButton {
                 break;
             }
         }
-        min = Math.min(Math.abs(this.getX()) , Math.abs(this.getY()));
+        min = Math.min(Math.abs(this.getMyX()) , Math.abs(this.getMyY()));
         for (int i = 1 ;i < min + 1 ;i++){
-            if (!(bts[this.getY() - i][this.getX() - i] instanceof Piece)
-                    || !(((Piece) bts[this.getY() - i][this.getX() - i]).getColor().equals(this.color))){
-                places.add("" + (this.getY() - i) + (this.getX() - i));
-                if (bts[this.getY() - i][this.getX() - i] instanceof Piece) {
-                    if (!(((Piece) bts[this.getY() - i][this.getX() - i]).getColor().equals(this.color))) {
+            if (!(bts[this.getMyY() - i][this.getMyX() - i] instanceof Piece)
+                    || !(((Piece) bts[this.getMyY() - i][this.getMyX() - i]).getColor().equals(this.color))){
+                places.add("" + (this.getMyY() - i) + (this.getMyX() - i));
+                if (bts[this.getMyY() - i][this.getMyX() - i] instanceof Piece) {
+                    if (!(((Piece) bts[this.getMyY() - i][this.getMyX() - i]).getColor().equals(this.color))) {
                         break;
                     }
                 }
@@ -155,13 +155,13 @@ public abstract class Piece extends JButton {
                 break;
             }
         }
-        min = Math.min(Math.abs(this.getX()) , Math.abs( 7 - this.getY()));
+        min = Math.min(Math.abs(this.getMyX()) , Math.abs( 7 - this.getMyY()));
         for (int i = 1 ;i < min + 1 ;i++){
-            if (!(bts[this.getY() + i][this.getX() - i] instanceof Piece)
-                    || !(((Piece) bts[this.getY() + i][this.getX() - i]).getColor().equals(this.color))){
-                places.add("" + (this.getY() + i) + (this.getX() - i));
-                if (bts[this.getY() + i][this.getX() - i] instanceof Piece) {
-                    if (!(((Piece) bts[this.getY() + i][this.getX() - i]).getColor().equals(this.color))) {
+            if (!(bts[this.getMyY() + i][this.getMyX() - i] instanceof Piece)
+                    || !(((Piece) bts[this.getMyY() + i][this.getMyX() - i]).getColor().equals(this.color))){
+                places.add("" + (this.getMyY() + i) + (this.getMyX() - i));
+                if (bts[this.getMyY() + i][this.getMyX() - i] instanceof Piece) {
+                    if (!(((Piece) bts[this.getMyY() + i][this.getMyX() - i]).getColor().equals(this.color))) {
                         break;
                     }
                 }

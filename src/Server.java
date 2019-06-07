@@ -1,37 +1,21 @@
-import javax.swing.*;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
+public class Server implements Runnable {
     private Socket socket1;
     private Socket socket2;
+    private DataInputStream in1;
+    private DataOutputStream out1;
+    private DataInputStream in2;
+    private DataOutputStream out2;
     private ServerSocket server;
+    private String turn;
 
     public Server(int port) {
         try {
             server = new ServerSocket(port);
-            System.out.println("Server started");
-            System.out.println("Waiting for a client ...");
-            socket1 = server.accept();
-            ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new DataInputStream(socket1.getInputStream())));
-            JButton[][] bts = (JButton[][]) in.readObject();
-            System.out.println("Client1 accepted");
-
-            socket2 = server.accept();
-            System.out.println("Client2 accepted");
-            ObjectOutputStream out = new ObjectOutputStream(new DataOutputStream(socket2.getOutputStream()));
-            out.writeObject(bts);
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        try{
-            socket1.close();
-            socket2.close();
+            turn = "white";
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -39,7 +23,37 @@ public class Server {
 
     }
 
-    public static void main(String[] args) {
-        Server server = new Server(8080);
+    @Override
+    public void run() {
+        try {
+            System.out.println("server started");
+            socket1 = server.accept();
+            socket2 = server.accept();
+            System.out.println("game server");
+            in1 = new DataInputStream(socket1.getInputStream());
+            out1 = new DataOutputStream(socket1.getOutputStream());
+            in2 = new DataInputStream(socket2.getInputStream());
+            out2 = new DataOutputStream(socket2.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        while (true){
+            try {
+                if (turn.equals("white")){
+                    String strIn = in1.readUTF();
+                    out2.writeUTF(strIn);
+                    turn = "black";
+                } else {
+                    String strIn = in2.readUTF();
+                    out1.writeUTF(strIn);
+                    turn = "white";
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }

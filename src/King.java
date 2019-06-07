@@ -33,52 +33,52 @@ public class King extends Piece {
 
     @Override
     ArrayList<String> availablePlaces(JButton[][] bts) {
-        if (this.getY() <= 6 && this.getX() >= 1) {
-            if (!(bts[this.getY() + 1][this.getX() - 1] instanceof Piece)
-                    || !(((Piece) bts[this.getY() + 1][this.getX() - 1]).getColor().equals(this.color))) {
-                places.add("" + (this.getY() + 1) + (this.getX() - 1));
+        if (this.getMyY() <= 6 && this.getMyX() >= 1) {
+            if (!(bts[this.getMyY() + 1][this.getMyX() - 1] instanceof Piece)
+                    || !(((Piece) bts[this.getMyY() + 1][this.getMyX() - 1]).getColor().equals(this.color))) {
+                places.add("" + (this.getMyY() + 1) + (this.getMyX() - 1));
             }
         }
-        if (this.getY() <= 6) {
-            if (!(bts[this.getY() + 1][this.getX()] instanceof Piece)
-                    || !(((Piece) bts[this.getY() + 1][this.getX()]).getColor().equals(this.color))) {
-                places.add("" + (this.getY() + 1) + (this.getX()));
+        if (this.getMyY() <= 6) {
+            if (!(bts[this.getMyY() + 1][this.getMyX()] instanceof Piece)
+                    || !(((Piece) bts[this.getMyY() + 1][this.getMyX()]).getColor().equals(this.color))) {
+                places.add("" + (this.getMyY() + 1) + (this.getMyX()));
             }
         }
-        if (this.getY() <= 6 && this.getX() <= 6) {
-            if (!(bts[this.getY() + 1][this.getX() + 1] instanceof Piece)
-                    || !(((Piece) bts[this.getY() + 1][this.getX() + 1]).getColor().equals(this.color))) {
-                places.add("" + (this.getY() + 1) + (this.getX() + 1));
+        if (this.getMyY() <= 6 && this.getMyX() <= 6) {
+            if (!(bts[this.getMyY() + 1][this.getMyX() + 1] instanceof Piece)
+                    || !(((Piece) bts[this.getMyY() + 1][this.getMyX() + 1]).getColor().equals(this.color))) {
+                places.add("" + (this.getMyY() + 1) + (this.getMyX() + 1));
             }
         }
-        if (this.getY() >= 1 && this.getX() >= 1) {
-            if (!(bts[this.getY() - 1][this.getX() - 1] instanceof Piece)
-                    || !(((Piece) bts[this.getY() - 1][this.getX() - 1]).getColor().equals(this.color))) {
-                places.add("" + (this.getY() - 1) + (this.getX() - 1));
+        if (this.getMyY() >= 1 && this.getMyX() >= 1) {
+            if (!(bts[this.getMyY() - 1][this.getMyX() - 1] instanceof Piece)
+                    || !(((Piece) bts[this.getMyY() - 1][this.getMyX() - 1]).getColor().equals(this.color))) {
+                places.add("" + (this.getMyY() - 1) + (this.getMyX() - 1));
             }
         }
-        if (this.getY() >= 1 && this.getX() <= 6) {
-            if (!(bts[this.getY() - 1][this.getX() + 1] instanceof Piece)
-                    || !(((Piece) bts[this.getY() - 1][this.getX() + 1]).getColor().equals(this.color))) {
-                places.add("" + (this.getY() - 1) + (this.getX() + 1));
+        if (this.getMyY() >= 1 && this.getMyX() <= 6) {
+            if (!(bts[this.getMyY() - 1][this.getMyX() + 1] instanceof Piece)
+                    || !(((Piece) bts[this.getMyY() - 1][this.getMyX() + 1]).getColor().equals(this.color))) {
+                places.add("" + (this.getMyY() - 1) + (this.getMyX() + 1));
             }
         }
-        if (this.getY() >= 1) {
-            if (!(bts[this.getY() - 1][this.getX()] instanceof Piece)
-                    || !(((Piece) bts[this.getY() - 1][this.getX()]).getColor().equals(this.color))) {
-                places.add("" + (this.getY() - 1) + this.getX());
+        if (this.getMyY() >= 1) {
+            if (!(bts[this.getMyY() - 1][this.getMyX()] instanceof Piece)
+                    || !(((Piece) bts[this.getMyY() - 1][this.getMyX()]).getColor().equals(this.color))) {
+                places.add("" + (this.getMyY() - 1) + this.getMyX());
             }
         }
-        if (this.getX() >= 1) {
-            if (!(bts[this.getY()][this.getX() - 1] instanceof Piece)
-                    || !(((Piece) bts[this.getY()][this.getX() - 1]).getColor().equals(this.color))) {
-                places.add("" + this.getY() + (this.getX() - 1));
+        if (this.getMyX() >= 1) {
+            if (!(bts[this.getMyY()][this.getMyX() - 1] instanceof Piece)
+                    || !(((Piece) bts[this.getMyY()][this.getMyX() - 1]).getColor().equals(this.color))) {
+                places.add("" + this.getMyY() + (this.getMyX() - 1));
             }
         }
-        if (this.getX() <= 6) {
-            if (!(bts[this.getY()][this.getX() + 1] instanceof Piece)
-                    || !(((Piece) bts[this.getY()][this.getX() + 1]).getColor().equals(this.color))) {
-                places.add("" + this.getY() + (this.getX() + 1));
+        if (this.getMyX() <= 6) {
+            if (!(bts[this.getMyY()][this.getMyX() + 1] instanceof Piece)
+                    || !(((Piece) bts[this.getMyY()][this.getMyX() + 1]).getColor().equals(this.color))) {
+                places.add("" + this.getMyY() + (this.getMyX() + 1));
             }
         }
         return places;
