@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author Fatemeh Valipour
  * @version 1.0
  */
-public class Bishop extends Piece {
+public class Bishop extends Piece{
     public Bishop(int ID, String color, boolean isIn, int X, int Y) {
         super(ID , color, isIn, X, Y);
         pieces.add(this);

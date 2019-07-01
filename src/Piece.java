@@ -18,9 +18,9 @@ public abstract class Piece extends JButton {
     public static ArrayList<Piece> getPieces() {
         return pieces;
     }
+    abstract ArrayList<String> availablePlaces(JButton[][] bts);
 //    abstract boolean moveing(int x, int y);
 
-    abstract ArrayList<String> availablePlaces(JButton[][] bts);
 
     public Piece(int ID, String color, boolean isIn, int X, int Y) {
         this.ID = ID;
