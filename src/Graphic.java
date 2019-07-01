@@ -5,12 +5,11 @@ import java.awt.event.MouseListener;
 import java.awt.Color;
 import java.io.*;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 /**
  * it makes the appearance of the map of the game
  *
- * @author fatemeh
+ * @author Fatemeh Valipour
  * @version 1.0.0
  */
 public class Graphic implements MouseListener,Runnable{
@@ -29,7 +28,7 @@ public class Graphic implements MouseListener,Runnable{
 
     public Graphic(String color) {
         turn = color;
-        mainFrame = new JFrame("Chess");
+        mainFrame = new JFrame(color);
         panel = new JPanel();
         panel1 = new JPanel();
         panel2 = new JPanel();
@@ -37,6 +36,11 @@ public class Graphic implements MouseListener,Runnable{
         bts = new JButton[8][8];
     }
 
+    /**
+     *
+     * makes the pieces,opens frame
+     * @throws IOException
+     */
     public void open() throws IOException {
         System.out.println("first " + turn);
         socket = new Socket("127.0.0.1",8080);
@@ -112,6 +116,9 @@ public class Graphic implements MouseListener,Runnable{
         mainFrame.setVisible(true);
     }
 
+    /**
+     * arranges panel
+     */
     public void arrange() {
         panel2.removeAll();
         panel2.revalidate();
@@ -122,6 +129,9 @@ public class Graphic implements MouseListener,Runnable{
         }
     }
 
+    /**
+     * rearranges panel after change
+     */
     public void rearrange() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -134,6 +144,12 @@ public class Graphic implements MouseListener,Runnable{
         }
     }
 
+    /**
+     * finds place of a button
+     * @param bts
+     * @param jbtn
+     * @return
+     */
     public String find(JButton[][] bts, JButton jbtn) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -148,6 +164,10 @@ public class Graphic implements MouseListener,Runnable{
     JButton btn2 = null;
     boolean changed = false;
 
+    /**
+     * shows available places to move and moves pieces
+     * @param e an event
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         if (!changed) {
@@ -208,6 +228,13 @@ public class Graphic implements MouseListener,Runnable{
             changed = false;
         }
     }
+
+    /**
+     * finds a button with x and y
+     * @param y
+     * @param x
+     * @return
+     */
     public JButton findBtn(int y , int x){
         JButton foundBtn = null;
         for (int i = 0 ; i < 8 ; i++){
@@ -220,6 +247,10 @@ public class Graphic implements MouseListener,Runnable{
         return foundBtn;
     }
 
+    /**
+     * finds danger places for king
+     * @param bts 2D array of the map
+     */
     public void king(JButton[][] bts){
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -256,7 +287,9 @@ public class Graphic implements MouseListener,Runnable{
 
     }
 
-
+    /**
+     * main part of the game that runs white and black at the same time
+     */
     @Override
     public void run() {
         //this.open();

@@ -1,6 +1,11 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+/**
+ * Server class
+ * @author Fatemeh Valipour
+ * @version 1.0
+ */
 
 public class Server implements Runnable {
     private Socket socket1;
@@ -23,6 +28,9 @@ public class Server implements Runnable {
 
     }
 
+    /**
+     * method in thread to hear changes
+     */
     @Override
     public void run() {
         try {

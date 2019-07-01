@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 /**
  * Pawn extends piece
- * @author man
+ * @author fatemeh Valipour
  * @version 1.0
  */
 public class Pawn extends Piece {
@@ -15,7 +15,6 @@ public class Pawn extends Piece {
         pieces.add(this);
     }
 
-    //TODO after first move change the boolean to false in main
 
     public boolean isFirstMove() {
         return firstMove;
@@ -67,6 +66,11 @@ public class Pawn extends Piece {
 //        }
 //        return false;
 //    }
+    /**
+     *
+     * @param bts 2D array,the map
+     * @return Arraylist of available places to move
+     */
 
     @Override
     ArrayList<String> availablePlaces(JButton[][] bts) {

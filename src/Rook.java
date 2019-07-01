@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * Rook extends piece
  *
- * @author man
+ * @author Fatemeh Valipour
  * @version 1.0
  */
 public class Rook extends Piece {
@@ -15,13 +15,13 @@ public class Rook extends Piece {
         pieces.add(this);
     }
 
-    /**
-     * checks possibility of move
-     *
-     * @param x destination
-     * @param y destination
-     * @return a boolean to demonstrate if Bishop is movable or not
-     */
+//    /**
+//     * checks possibility of move
+//     *
+//     * @param x destination
+//     * @param y destination
+//     * @return a boolean to demonstrate if Bishop is movable or not
+//     */
 //    @Override
 //    boolean moveing(int x, int y) {
 //        if ((x == super.X && y != super.Y) || (y == super.Y && x != super.X)) {
@@ -46,7 +46,7 @@ public class Rook extends Piece {
 //                        return true;
 //                    } else
 //                        return false;
-//                } else if (x != X && y == Y) {//TODO why always true?
+//                } else if (x != X && y == Y) {
 //                    boolean YesOrNo = false;
 //                    int dif = Math.abs(x - super.X);
 //                    int ratio = 1;
@@ -70,6 +70,11 @@ public class Rook extends Piece {
 //        }
 //        return false;
 //    }
+    /**
+     *
+     * @param bts 2D array,the map
+     * @return Arraylist of available places to move
+     */
 
     @Override
     ArrayList<String> availablePlaces(JButton[][] bts) {

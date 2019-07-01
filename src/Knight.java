@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 /**
  * Knight extends piece
- * @author man
+ * @author Fatemeh Valipour
  * @version 1.0
  */
 public class Knight extends Piece {
@@ -12,12 +12,12 @@ public class Knight extends Piece {
         super(ID , color, isIn, X, Y);
         pieces.add(this);
     }
-    /**
-     * checks possibility of move
-     * @param x destination
-     * @param y destination
-     * @return a boolean to demonstrate if Bishop is movable or not
-     */
+//    /**
+//     * checks possibility of move
+//     * @param x destination
+//     * @param y destination
+//     * @return a boolean to demonstrate if Bishop is movable or not
+//     */
 //    @Override
 //    boolean moveing(int x, int y) {
 //        boolean movable;
@@ -31,6 +31,11 @@ public class Knight extends Piece {
 //        }
 //        return false;
 //    }
+    /**
+     *
+     * @param bts 2D array,the map
+     * @return Arraylist of available places to move
+     */
 
     @Override
     ArrayList<String> availablePlaces(JButton[][] bts) {

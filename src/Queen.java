@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 /**
  * Queen extends piece
- * @author man
+ * @author Fatemeh valipour
  * @version 1.0
  */
 
@@ -17,12 +17,12 @@ public class Queen extends Piece{
         pieces.add(this);
     }
 
-    /**
-     * checks possibility of move
-     * @param x destination
-     * @param y destination
-     * @return a boolean to demonstrate if Queen is movable or not
-     */
+//    /**
+//     * checks possibility of move
+//     * @param x destination
+//     * @param y destination
+//     * @return a boolean to demonstrate if Queen is movable or not
+//     */
 //    @Override
 //    boolean moveing(int x, int y) {
 //        boolean movable = false;
@@ -53,7 +53,7 @@ public class Queen extends Piece{
 //                    return false;
 //
 //            }
-//            //TODO be carefull about x , y ke user midahad ke yeki bishtar ast
+//
 //            else if (x - super.X == (-1) * (y - super.Y)) {
 //                int ratioX = 1;
 //                int ratioY = 1;
@@ -122,6 +122,11 @@ public class Queen extends Piece{
 //        }
 //        return false;
 //    }
+    /**
+     *
+     * @param bts 2D array,the map
+     * @return Arraylist of available places to move
+     */
 
     @Override
     ArrayList<String> availablePlaces(JButton[][] bts) {

@@ -3,10 +3,10 @@ import java.util.ArrayList;
 
 /**
  * superclass of other pieces
- * @author man
+ * @author Fatemeh Valipour
  * @version 1.0
  */
-//TODO bound check
+
 public abstract class Piece extends JButton {
     protected int ID;
     protected String color;
@@ -19,8 +19,9 @@ public abstract class Piece extends JButton {
         return pieces;
     }
 //    abstract boolean moveing(int x, int y);
+
     abstract ArrayList<String> availablePlaces(JButton[][] bts);
-    //TODO check if x , y are ok in the table
+
     public Piece(int ID, String color, boolean isIn, int X, int Y) {
         this.ID = ID;
         this.color = color;
@@ -30,30 +31,52 @@ public abstract class Piece extends JButton {
         places = new ArrayList<>();
     }
 
+    /**
+     * gets color of piece
+     * @return
+     */
     public String getColor() {
         return color;
     }
 
-    public boolean isIn() {
-        return isIn;
-    }
+    /**
+     *
+     * @return y
+     */
 
     public int getMyY() {
         return Y;
     }
 
+    /**
+     *
+     * @return x
+     */
     public int getMyX() {
         return X;
     }
 
+    /**
+     *
+     * @param x
+     */
     public void setX(int x) {
         X = x;
     }
 
+    /**
+     *
+     * @param y
+     */
     public void setY(int y) {
         Y = y;
     }
 
+    /**
+     * available places for rook
+     * @param bts map
+     * @return arraylist possible moves
+     */
     protected ArrayList<String> Rook(JButton bts[][]){
         for (int i = this.getMyX() + 1; i < 8; i++) {
             if (!(bts[this.getMyY()][i] instanceof Piece)
@@ -112,6 +135,12 @@ public abstract class Piece extends JButton {
         }
         return places;
     }
+    /**
+     * available places for bishop
+     * @param bts map
+     * @return arraylist possible moves
+     */
+
     protected ArrayList<String> Bishop(JButton bts[][]){
         int min = Math.min(Math.abs(7 - this.getMyX()) , Math.abs(7 - this.getMyY()));
         for (int i = 1 ;i < min + 1 ;i++){
